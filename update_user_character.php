@@ -1,6 +1,6 @@
 <?php
-    $age = $_POST["age_name"];
+    $face = $_POST["face"];
     $ret = array(
-        'ret' => $age,
+        'ret' => $face,
     );
     echo json_encode($ret);
