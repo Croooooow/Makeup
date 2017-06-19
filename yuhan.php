@@ -135,6 +135,26 @@ function updateUserInfo() {
 		}
 	});
 }
+function updateUserCharacter() {
+	$.ajax({
+		type:"post",
+		url:"update_user_character.php",
+		data:{
+			face:$("#face").val(),
+			eye:$("#eye").val(),
+			skin:$("#skin").val(),
+			spot:$("#spot").val()
+		}, 
+		datatype:"json",
+		success:function(data) {
+			alert(data);
+			alert("修改成功.");
+		},
+		error:function(){
+			alert("修改失败.");
+		}
+	});
+}
 
 function showUserImage(input) {
 	if (input.files && input.files[0]) {
@@ -179,6 +199,9 @@ $(function() {
 	});
 	$("#btn-info-modify").click(function(){
 		updateUserInfo();
+	});
+	$("#btn-char-modify").click(function(){
+		updateUserCharacter();
 	});
 	$("#file-user-image").change(function() {
 		showUserImage(this);
@@ -276,6 +299,7 @@ $(function() {
 				<input type="text" class="form-control" id="eye" >
 				<input type="text" class="form-control" id="skin" >
 				<input type="text" class="form-control" id="spot" >
+				<button type="button"  class="btn btn-primary" id="btn-char-modify">修改</button>
 			</div>
 
 	</div>	
@@ -289,7 +313,7 @@ $(function() {
         		<div class="col-sm-3 col-float-block">
             		<select name="makeup_style[]" id="makeup_style"  class="form-control"></select>
         		</div>
-				<button type="button" class="btn btn-info btn-lg" id="bt-type-submit">问问知心</button>
+				<button type="button" class="btn btn-info" id="bt-type-submit">问问知心</button>
 		</div>
 	</div>
 
