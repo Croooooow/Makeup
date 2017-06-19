@@ -3,12 +3,13 @@
   {
 	echo "error.";
   }
+  sleep(2);
   $result = exec("C:\\Python27\\python.exe D:\\wamp64\\www\\makeup2\\test.py ".$_FILES["file-user-image"]["name"]);
   $ret = array(
       'ret' => $result,
-      'face' => 'dasda',
-      'eye' => 'dasda',
-      'skin' => 'dasdad',
-      'spot' => 'dsadad',
+      'face' => '椭圆脸',
+      'eye' => '标准眼型',
+      'skin' => '偏黄',
+      'spot' => '无',
   );
   echo json_encode($ret);

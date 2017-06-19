@@ -4,10 +4,12 @@
 	<meta charset="utf-8"> 
 	<title>Makeup</title>
 	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/window.css">
 	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/window.js"></script>
 	<script >
-	
+
 function getSelectVal() {
 //获取后台json数据
     $.getJSON("server.php", {
@@ -35,9 +37,9 @@ function getTypeDescription() {
 			}
 			res = eval("("+data+")");
 			$("#recommend").append("<h4>美知心为您智选的结果："+$("#makeup_style option:selected").text()+"</h4>");
-			$("#recommend").append("<img class=\"img-thumbnail\" src=\""+res.img1+"\"/>");
-			$("#recommend").append("<img class=\"img-thumbnail\" src=\""+res.img2+"\"/>");
-			$("#recommend").append("<img class=\"img-thumbnail\" src=\""+res.img3+"\"/>");
+			$("#recommend").append("<img class=\"col-sm-4 img-thumbnail\" src=\""+res.img1+"\"/>");
+			$("#recommend").append("<img class=\"col-sm-4 img-thumbnail\" src=\""+res.img2+"\"/>");
+			$("#recommend").append("<img class=\"col-sm-4 img-thumbnail\" src=\""+res.img3+"\"/>");
 			$("#recommend").append("<h4>图解知识</h4>");
 			$("#recommend").append("<ul class=\"list-group\" id=\"knowledge\"></ul>");
 			$("#knowledge").append("<li class=\"list-group-item\">风格特征：" + res.style + "</li>");
@@ -127,8 +129,7 @@ function updateUserInfo() {
 		}, 
 		datatype:"json",
 		success:function(data) {
-			alert(data);
-			alert("修改成功.");
+			win.alert("系统提示","修改成功.");
 		},
 		error:function(){
 			alert("修改失败.");
@@ -177,7 +178,12 @@ function uploadUserImage() {
 			contentType: false,
 			processData: false,
 			success: function (data) {
-				alert(data);
+				//alert(data);
+				res = eval('('+data+')');
+				$('#face').val(res.face);
+				$('#eye').val(res.eye);
+				$('#skin').val(res.skin);
+				$('#spot').val(res.spot);
 			},
 			error: function () {
 				alert("上传失败！");
