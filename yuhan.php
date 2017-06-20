@@ -29,7 +29,7 @@ function getTypeDescription() {
 	$.ajax({
 		type:"post",
 		url:"type_description.php",
-		data:{type:$("#makeup_style").val()}, 
+		data:{makeup_style:$("#makeup_style").val()}, 
 		datatype:"json",
 		success:function(data) {
 			if ($("#recommend").children().length > 0){
